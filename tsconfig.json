@@ -17,7 +17,8 @@
 
     /* Node */
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node"]
   },
   "include": ["src", "prisma/**/*.ts"]
 }
