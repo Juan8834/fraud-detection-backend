@@ -8,18 +8,24 @@
     "build": "npx prisma generate && tsc",
     "start": "node dist/index.js",
     "seed": "ts-node prisma/seed.ts",
+    "seed:local": "cross-env DOTENV_CONFIG_PATH=.env.local ts-node prisma/seed.ts",
+    "seed:production": "cross-env DOTENV_CONFIG_PATH=.env.production ts-node prisma/seed.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",
+    "@types/node": "^24.10.9",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "@types/node": "^24.10.9"
+    "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
+    "cross-env": "^10.1.0",
     "prisma": "^6.19.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
