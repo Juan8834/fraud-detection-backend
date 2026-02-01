@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    /* Target modern Node.js */
     "target": "ES2020",
     "module": "CommonJS",
     "outDir": "./dist",
@@ -8,17 +9,22 @@
     "strict": true,
     "noImplicitAny": false,
 
-    /* Interop */
+    /* Module interop */
     "esModuleInterop": true,
-
-    /* Build performance */
     "skipLibCheck": true,
 
     /* Node support */
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "types": ["node"]
+    "types": ["node"],
+
+    /* Source maps for easier debugging (optional) */
+    "sourceMap": true
   },
-  "include": ["src/**/*.ts", "prisma/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+
+  /* Only compile source code */
+  "include": ["src/**/*.ts"],
+
+  /* Ignore these folders */
+  "exclude": ["node_modules", "dist", "prisma/migrations", "prisma/schema.prisma"]
 }
