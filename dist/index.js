@@ -26,5 +26,20 @@ app.get("/employees", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch employees" });
     }
 });
+
+app.get("/transactions", async (req, res) => {
+  try {
+    const transactions = await prisma.transaction.findMany({
+      include: {
+        employee: true,
+        customer: true,
+      },
+    });
+    res.json(transactions);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch transactions" });
+  }
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
